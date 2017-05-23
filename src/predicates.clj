@@ -35,15 +35,14 @@
   (first (map pred (filter pred a-seq))))
 
 (defn my-every? [pred a-seq]
-  (let [foo (map pred a-seq)]
-    (or (empty? foo) (every? boolean foo))))
+  (empty? (filter (complement pred) a-seq)))
 
 (defn prime? [n]
   (let [pred (fn [x] (= 0 (mod n x)))]
     (not (some pred (range 2 n)))))
 
 
-(defn foo [n]
+(defn optimus-prime? [n]
   (let [pred (fn [x] (mod n x))]
   (every? pos? (map pred (range 2 n)))))
 ;^^
